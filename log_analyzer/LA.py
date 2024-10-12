@@ -2,7 +2,7 @@ import re
 
 import re._compiler
 
-log_file_path = "C:/Users/Jackson/source/repos/log_analyzer/test.log"
+log_file_path = "test.log"
 
 def log_pass(log_file_path):
     with open(log_file_path, 'r') as file:
