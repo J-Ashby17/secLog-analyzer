@@ -27,8 +27,8 @@ def log_pass(log_file_path):
     for log in logs:
         match = pattern.search(log)
         if match: 
-            user = match.group(2)
-            ip = match.group(3)
+            user = match.group(1)
+            ip = match.group(2)
         
             #failed login ip appended to HM otherwise increment is increased
             if ip not in failed_logins:
