@@ -1,8 +1,18 @@
 import re
+import os
 
 import re._compiler
 
 log_file_path = "test.log"
+
+if not os.path.exists(log_file_path):
+    with open(log_file_path, 'w') as file:
+        file.write("Failed password for invalid user admin from 192.168.1.1\n")
+        file.write("Failed password for root from 10.0.0.5\n")
+        file.write("Failed password for invalid user test from 172.16.0.3\n")
+    print(f"{log_file_path} was created with sample content.")
+else:
+    print(f"{log_file_path} already exists.")
 
 def log_pass(log_file_path):
     with open(log_file_path, 'r') as file:
