@@ -9,7 +9,7 @@ def log_pass(log_file_path):
         logs = file.readlines()
 
     #regex for IP
-    pattern = re._compiler(r'Failed password for (invalid user)'?(\w+) from (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})')
+    pattern = re.compile(r'Failed password for (?:invalid user )?(\w+) from (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})')
 
     failed_logins = {}
 
@@ -17,13 +17,13 @@ def log_pass(log_file_path):
     for log in logs:
         match = pattern.search(log)
         if match: 
-        user = match.group(2)
-        ip = match.group(3)
+            user = match.group(2)
+            ip = match.group(3)
         
-        #failed login ip appended to HM otherwise increment is increased
-        if ip not in failed_logins:
-            failed_logins[ip]=0
-        failed_logins[ip] += 1
+            #failed login ip appended to HM otherwise increment is increased
+            if ip not in failed_logins:
+                failed_logins[ip]=0
+            failed_logins[ip] += 1
 
     for ip, count in failed_logins.items():
         if count > 3:
