@@ -1,1 +1,1 @@
-# secLog-analyzer
+# secLog-analyzer just for one dummy log file for now
